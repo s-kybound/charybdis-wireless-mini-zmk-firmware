@@ -60,7 +60,7 @@ ENABLE_USB_LOGGING=true docker-compose -f local-build/docker-compose.yml run --r
 
 Follow instructions [here](https://zmk.dev/docs/development/usb-logging) to see the log stream on your computer.
 
-Since this is a split keyboard you'll have to change the tty device depending on what you want log output from (e.g. `ttyACM0` for dongle, `ttyACM1` for right side, and `ttyACM2` for left side.
+Since this is a split keyboard you'll have to change the tty device depending on what you want log output from (e.g. `ttyACM0` for the right side and `ttyACM1` for the left side).
 
 To enable PMW3610 sensor debug logging, also uncomment `CONFIG_PMW3610_ALT_LOG_LEVEL_DBG=y` in the relevant shield conf.
 
@@ -73,12 +73,6 @@ SKIP_WEST_UPDATE=true docker-compose -f local-build/docker-compose.yml run --rm 
 ```
 
 Normal builds should not use this so `west update` can pull the configured module revisions.
-
-### Patched APDS9960 Zephyr Driver
-
-The Prospector APDS9960 sensor builds expect Zephyr's stock APDS9960 driver to be disabled and the Prospector module replacement driver to be enabled.
-
-The build script prints a resolved APDS9960 config block after each build so this is visible in the terminal output.
 
 ### Build Logs
 

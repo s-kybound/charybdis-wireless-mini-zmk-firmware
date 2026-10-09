@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repository offers pre-configured ZMK firmware. It's designed for the [Wireless Charybdis keyboards](https://github.com/280Zo/charybdis-wireless-mini-3x6-build-guide?tab=readme-ov-file), but is easily adaptable to other platforms. It supports the latest stable ZMK release (v0.4.1) with full Bluetooth/USB split and dongle build support (including Prospector dongles with displays), and uses the latest input listeners and processors for responsive pointer and scroll behavior.
+This repository offers pre-configured ZMK firmware. It's designed for the [Wireless Charybdis keyboards](https://github.com/280Zo/charybdis-wireless-mini-3x6-build-guide?tab=readme-ov-file), but is easily adaptable to other platforms. It supports the latest stable ZMK release (v0.4.1) with full Bluetooth/USB split support, and uses the latest input listeners and processors for responsive pointer and scroll behavior.
 
 ## Overview & Usage
 
@@ -51,11 +51,6 @@ To see all the layers check out the [full render](keymap-drawer/all_layers/all_l
 
 
 **Other Highlights**
-- This repo now includes builds for the **[Prospector ZMK screen dongle](https://github.com/carrefinho/prospector)**.
-  - Suppoert for the Nice!Nano v2 has been added to the firmware options.
-  - The prospector case has been adapted in [OnShape](https://cad.onshape.com/documents/1ab8632c0729c14a80991694/w/0a5575e0aa91142d15642877/e/053f9ce9786904291254a911) to fit the Nice!Nano v2.
-  Options are also available for the smaller APDS9960 ambient light sensor variant, and a lower-cost Waveshare non-touch screen option (SKU 24382)
-  - APDS9960 sensor builds use a custom Prospector module ALS-only driver that works with the various APDS9960 sensor types.
 - **Timeless-inspired home row mods:** Based on [urob's](https://github.com/urob/zmk-config#timeless-homerow-mods) work and configured on the BASE layer.
 - **Thumb-scroll mode:** Hold the left-most thumb button (K36) while moving the trackball to turn motion into scroll.
 - **Precision cursor mode:** Double-tap, then hold K36 to drop the pointer speed, release to return to normal speed.
@@ -69,17 +64,16 @@ To see all the layers check out the [full render](keymap-drawer/all_layers/all_l
   - Hold: Layer 1 (numbers) while the key is held
   - Quick tap, then hold: Repeats Backspace instead of dropping into Layer 1
 - **Bluetooth profile quick-swap:** Jump to the EXTRAS layer and tap the dedicated BT-select keys to pair or switch among up to four saved hosts (plus BT CLR to forget all).
-- **Prospector display brightness controls:** Prospector builds can toggle between ambient-light and manual brightness control from the EXTRAS layer. On Colemak-DH, K04 brightens, K15 toggles auto/manual, and K16 dims.
 - **PMW3610 low power trackball sensor driver:** Provided by [badjeff](https://github.com/badjeff/zmk-pmw3610-driver)
   - Patched to prevent cursor jump on wake
 - **Hold-tap side-aware triggers:** Each HRM key only becomes a modifier if the opposite half is active, preventing accidental holds while one-handed.
 - **Timeless HRM with selective exceptions:** Base home-row mods use the timeless-style `balanced + hold-trigger-on-release` setup, while A, I, and O (on a Colemak-DH layout) keep tap-preferred variants to reduce accidental mod triggers during fast rolls.
-- **ZMK Studio:** Supported on Bluetooth and the standard no-screen dongle builds for quick keymap adjustments. Prospector screen builds disable it to preserve RAM.
+- **ZMK Studio:** Supported on the Bluetooth builds for quick keymap adjustments.
 
 
 ## Flash the Firmware
 
-Download your choice of firmware from the Releases page. Choose a combination of format (Bluetooth/Dongle) and layout (QWERTY, etc.), then follow the steps below to flash it to your keyboard
+Download the firmware from the Releases page, then follow the steps below to flash it to your keyboard
 
 1. Unzip the firmware bundle
 2. One at a time, plug the devices into the computer through USB
@@ -88,10 +82,9 @@ Download your choice of firmware from the Releases page. Choose a combination of
 5. Copy the applicable uf2 file into the storage device
 6. It will take a moment, then it will unmount and restart itself.
 7. Repeat these steps for all devices.
-8. If you've flashed one of the prospector dongle builds, you'll need to power on the dongle, then the left side before the right. This will sync the battery widget to the correct side.
 
 > [!NOTE]
-> If you are flashing the firmware for the first time, or if you're switching between the dongle and the Bluetooth/USB configuration, flash the reset firmware to all the devices first
+> If you are flashing the firmware for the first time, or switching away from a previous configuration, flash the reset firmware to all the devices first
 
 
 ## Customization
@@ -100,17 +93,14 @@ Download your choice of firmware from the Releases page. Choose a combination of
 
 **ZMK Studio**
 
-[ZMK Studio](https://zmk.studio/) allows users to update functionality during runtime. It is supported on Bluetooth builds and the standard no-screen dongle build. For more details on how to use ZMK Studio, refer to the [ZMK documentation](https://zmk.dev/docs/features/studio).
-
-> [!NOTE]
-> Prospector screen builds disable ZMK Studio to preserve RAM and improve stability with the display stack.
+[ZMK Studio](https://zmk.studio/) allows users to update functionality during runtime. It is supported on the Bluetooth builds. For more details on how to use ZMK Studio, refer to the [ZMK documentation](https://zmk.dev/docs/features/studio).
 
 
 **Edit Keymap Directly**
 
 To change a key layout, choose a behavior you'd like to assign to a key, then choose a parameter code. This process is more clearly outlined on ZMK's [Keymaps & Behaviors](https://zmk.dev/docs/features/keymaps) page. All keycodes are documented [here](https://zmk.dev/docs/codes).
 
-Modify the [qwerty.keymap](config/keymaps/qwerty.keymap) or one of the behaviors, combos, or macros in the [keymap_features](config/keymap_features) folder, then follow the instructions below to build and flash the firmware to your keyboard.
+Modify the [miryoku_colemak_dh.keymap](config/keymaps/miryoku_colemak_dh.keymap) or one of the behaviors, combos, or macros in the [keymap_features](config/keymap_features) folder, then follow the instructions below to build and flash the firmware to your keyboard.
 
 ### Modifying Trackball Behavior
 
@@ -129,30 +119,6 @@ To change which firmware families are built:
 The main build families are:
 
 - `bt`: Bluetooth split builds
-- `dongle_standard_nano`: the default no-screen dongle builds
-- `dongle_prospector_*`: screen-enabled dongle builds using the Prospector adapter
-
-For any of the Prospector dongle firmwares, there are additional customization options.
-
-To change the Prospector layout:
-
-1. Open [build.yaml](build.yaml)
-2. Find the Prospector build entry you want
-3. Replace the selected file under `extra_conf_files` with a different layout file from [config/dongle_prospector_layouts](config/dongle_prospector_layouts)
-
-To change the Radii theme:
-
-1. Select `dongle_prospector_layout_radii.conf` in `extra_conf_files`
-2. Add one theme overlay from [config/dongle_prospector_themes](config/dongle_prospector_themes) to `extra_dtc_overlay_files`
-
-For Prospector builds with the APDS9960 ambient light sensor, [config/dongle_prospector/dongle_prospector_sensor.conf](config/dongle_prospector/dongle_prospector_sensor.conf) intentionally turns off Zephyr's stock APDS9960 driver and enables the Prospector module's replacement driver:
-
-```conf
-CONFIG_APDS9960=n
-CONFIG_PROSPECTOR_APDS9960=y
-```
-
-That keeps the application using the normal Zephyr sensor API while letting the Prospector module provide the APDS9960 behavior needed for variations in the APDS9960 sensors.
 
 ### Modify Keymap Selection
 
@@ -186,8 +152,7 @@ To build the firmware follow either of the build processes below:
 ## Credits
 
 - [badjeff](https://github.com/badjeff) for the PMW3610 ZMK driver used as the basis for the trackball sensor integration
-- [carrefinho](https://github.com/carrefinho) for the original [Prospector](https://github.com/carrefinho/prospector) hardware and the [Prospector ZMK module](https://github.com/carrefinho/prospector-zmk-module/tree/feat/new-status-screens) this repo adapts for Charybdis dongles
-- [eigatech](https://github.com/eigatech) for prior Charybdis dongle work and useful reference patterns around split trackball/input-listener integration
+- [eigatech](https://github.com/eigatech) for useful reference patterns around split trackball/input-listener integration
 - [nickcoutsos](https://github.com/nickcoutsos/keymap-editor) for the browser-based keymap editor workflow
 - [caksoylar](https://github.com/caksoylar/keymap-drawer) for the keymap rendering workflow and physical layout conversion tooling
 - [urob](https://github.com/urob/zmk-config#timeless-homerow-mods) for the timeless home-row mod approach this keymap builds on and the stacked layer SVG inspiration

@@ -240,10 +240,9 @@ jobs:
         BUILD_DIR=$(mktemp -d)
 
         # Apply studio-rpc-usb-uart to USB central shields only.
-        # charybdis_right_bt is the central in BT split mode.
-        # charybdis_dongle is the central in dongle mode.
-        # Peripherals (left_bt, left_dongle, right_dongle) don't need it.
-        if [[ "$TARGET" == "charybdis_right_bt" || "$TARGET" == "charybdis_dongle" ]]; then
+        # charybdis_right_bt is the central; charybdis_left_bt is the
+        # peripheral and does not need it.
+        if [[ "$TARGET" == "charybdis_right_bt" ]]; then
           SNIPPET_OPTION="-DSNIPPET=studio-rpc-usb-uart"
         else
           SNIPPET_OPTION=""
@@ -300,7 +299,7 @@ jobs:
           -b "$BD" \
           -- \
           "-DZMK_CONFIG=$CONFIG_DIR" \
-          "-DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE/boards;$GITHUB_WORKSPACE/zmk-pmw3610-driver;$GITHUB_WORKSPACE/prospector-zmk-module" \
+          "-DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE/boards;$GITHUB_WORKSPACE/zmk-pmw3610-driver" \
           "-DSHIELD=$SH" \
           $EXTRA_CONF_OPTION \
           $EXTRA_DTC_OVERLAY_OPTION \

@@ -8,19 +8,19 @@ Quick usage for this repo:
 2) Fan out from one source keymap to all other supported keymaps (excluding
    the source layout):
    python3 scripts/keymap_converter.py \
-     -i config/keymaps/colemak_dh.keymap \
+     -i config/keymaps/miryoku_colemak_dh.keymap \
      --all
 
 3) Single conversion:
    python3 scripts/keymap_converter.py \
-     -i config/keymaps/qwerty.keymap \
-     -m qwerty->graphite
+     -i config/keymaps/miryoku_colemak_dh.keymap \
+     -m colemak_dh->graphite
 
 Notes:
 - This script rewrites only the BASE layer `bindings = < ... >` block.
 - All non-BASE layers/includes/comments are copied from the source file.
 - `--all` infers the source layout from the input filename stem (for example,
-  `colemak_dh.keymap` -> `colemak_dh`). Use `--source-layout` to override.
+  `miryoku_colemak_dh.keymap` -> needs `--source-layout colemak_dh`).
 """
 
 import re

@@ -65,7 +65,7 @@ fi
 
 # Set permissions so users can delete them in their own environment
 echo "Setting permissions on ZMK resources..."
-chmod -R a+rwX .west zmk zephyr modules zmk-pmw3610-driver prospector-zmk-module
+chmod -R a+rwX .west zmk zephyr modules zmk-pmw3610-driver
 
 # # Debug: confirm checkout
 # echo "    West workspace ready. Project structure:"
@@ -153,11 +153,10 @@ build_firmware() {
   printf '  %s\n' "$build_dir"
 
   # Apply studio-rpc-usb-uart to USB central shields only.
-  # charybdis_right_bt is the central in BT split mode.
-  # charybdis_dongle is the central in dongle mode.
+  # charybdis_right_bt is the central; charybdis_left_bt is the peripheral.
   # Skip when USB logging is enabled since both use USB CDC and conflict.
   local extra_snippet=""
-  if [[ "$ENABLE_USB_LOGGING" != "true" ]] && [[ "$target" == "charybdis_right_bt" || "$target" == "charybdis_dongle" ]]; then
+  if [[ "$ENABLE_USB_LOGGING" != "true" ]] && [[ "$target" == "charybdis_right_bt" ]]; then
     extra_snippet="-S studio-rpc-usb-uart"
   fi
 
@@ -169,7 +168,7 @@ build_firmware() {
 
   # Pass the boards/ module so ZMK can discover the custom shields,
   # and the pmw3610 driver module.
-  local zmk_load_arg="-DZMK_EXTRA_MODULES=$SANDBOX_ROOT/boards;$SANDBOX_ROOT/zmk-pmw3610-driver;$SANDBOX_ROOT/prospector-zmk-module"
+  local zmk_load_arg="-DZMK_EXTRA_MODULES=$SANDBOX_ROOT/boards;$SANDBOX_ROOT/zmk-pmw3610-driver"
   local extra_conf_arg=()
   local extra_dtc_overlay_arg=()
 
@@ -191,7 +190,7 @@ build_firmware() {
     extra_dtc_overlay_arg=("-DEXTRA_DTC_OVERLAY_FILE=$(IFS=';'; echo "${extra_dtc_overlay_paths[*]}")")
   fi
 
-  # For stacked shields (space-separated, e.g. "charybdis_dongle prospector_adapter"),
+  # For stacked shields (space-separated, e.g. "shield_a shield_b"),
   # -DSHIELD must be the full stacked string. Substitute the discovered target overlay
   # name in place of the primary shield token in case they differ.
   local dshield
@@ -233,26 +232,11 @@ build_firmware() {
 
   echo "=== PUBLISHING ARTIFACT & CLEANING UP ==="
   # Map the entry format to the correct directory name:
-  # "bt"                - use charybdis_bt
-  # "dongle_standard_nano" - use charybdis_dongle
-  # Prospector entries  - use charybdis_dongle_prospector_<board>_<variant>
-  # anything else       - just use the original format name
+  # "bt"          - use charybdis_bt
+  # anything else - just use the original format name
   case "$entry_format" in
-    bt)                format_dir="charybdis_bt" ;;
-    dongle_standard_nano)   format_dir="charybdis_dongle" ;;
-    dongle_prospector_no_sensor|dongle_prospector_nano_no_sensor)
-      format_dir="charybdis_dongle_prospector_nice_nanov2_no_sensor"
-      ;;
-    dongle_prospector_sensor|dongle_prospector_nano_sensor)
-      format_dir="charybdis_dongle_prospector_nice_nanov2_sensor"
-      ;;
-    dongle_prospector_xiao_no_sensor)
-      format_dir="charybdis_dongle_prospector_xiao_no_sensor"
-      ;;
-    dongle_prospector_xiao_sensor)
-      format_dir="charybdis_dongle_prospector_xiao_sensor"
-      ;;
-    *)                 format_dir="$entry_format" ;;
+    bt)   format_dir="charybdis_bt" ;;
+    *)    format_dir="$entry_format" ;;
   esac
 
   # Publish the firmware artifact to the correct directory and set permissions
@@ -403,7 +387,7 @@ for entry_json in "${build_entries[@]}"; do
       if [[ "$shield" == "settings_reset" ]]; then
         shield_targets=("settings_reset")
       else
-        # For stacked shields (space-separated, e.g. "charybdis_dongle prospector_adapter"),
+        # For stacked shields (space-separated, e.g. "shield_a shield_b"),
         # use only the first token for overlay discovery; the full string is passed to -DSHIELD.
         primary_shield="${shield%% *}"
         mapfile -t shield_targets < <(

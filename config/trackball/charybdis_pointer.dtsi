@@ -23,8 +23,8 @@
 
     /* fast-pointer override, layer INDEX 10.
      * Used by miryoku_colemak_dh (FAST_L = 10), reached as D + J.
-     * colemak_dh.keymap has 8 layers (indices 0-7), so layer 10 can never be
-     * active there and this node is inert for every other keymap. */
+     * Inert for any keymap with 10 or fewer layers, since layer index 10
+     * can never become active there. */
     fast_pointer: fast_pointer {
         layers           = <10>;
         input-processors = <&zip_xy_scaler 2 1>;

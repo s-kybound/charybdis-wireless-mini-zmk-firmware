@@ -6,14 +6,10 @@ url: https://github.com/Bastardkb/Charybdis/
 requires: [pro_micro]
 features:
   - Keys
-  - QWERTY
-  - Colemak DH
+  - Miryoku Colemak DH
   - Mouse keys pointer
   - Trackball pointer
-  - Dongle/Bluetooth/USB
+  - Bluetooth/USB
 siblings:
   - charybdis_left_bt
   - charybdis_right_bt
-  - charybdis_left_dongle
-  - charybdis_right_dongle
-  - charybdis_dongle

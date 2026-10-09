@@ -52,11 +52,11 @@ jobs:
       - name: Parse keymap
         run: |
           mkdir -p keymap-drawer/all_layers
-          keymap -c keymap-drawer/configs/config-stacked.yaml parse -c 12 -z config/keymaps/qwerty.keymap \
+          keymap -c keymap-drawer/configs/config-stacked.yaml parse -c 12 -z config/keymaps/miryoku_colemak_dh.keymap \
             > keymap-drawer/stacked/qwerty.yaml
-          keymap -c keymap-drawer/configs/config-all-layers.yaml parse -c 12 -z config/keymaps/qwerty.keymap \
+          keymap -c keymap-drawer/configs/config-all-layers.yaml parse -c 12 -z config/keymaps/miryoku_colemak_dh.keymap \
             > keymap-drawer/all_layers/qwerty.yaml
-          keymap -c keymap-drawer/configs/config-combo.yaml parse -c 12 --virtual-layers "COMBOS" -z config/keymaps/qwerty.keymap \
+          keymap -c keymap-drawer/configs/config-combo.yaml parse -c 12 --virtual-layers "COMBOS" -z config/keymaps/miryoku_colemak_dh.keymap \
             > keymap-drawer/stacked/combos.yaml
 
       - name: Generate stacked YAML
