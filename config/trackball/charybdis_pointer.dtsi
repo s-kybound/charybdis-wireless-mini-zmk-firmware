@@ -1,6 +1,9 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
+// this makes trackball thingy smoother
+&zip_xy_scaler { track-remainders; };
+
 &trackball_listener {
     /* base processor chain on all layers */
     input-processors = <&zip_xy_scaler 5 5>;
