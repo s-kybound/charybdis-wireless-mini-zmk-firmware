@@ -182,7 +182,7 @@
             bindings = <
     &kp MINUS   &kp Q            &kp W            &kp F             &kp P                &kp B                &kp J          &kp L                 &kp U                 &kp Y             &kp APOS          &kp BSLH
     &kp CAPS    &ht_left LGUI A  &ht_left LALT R  &ht_left LCTRL S  &ht_left LSHFT T     &kp G                &kp M          &ht_right RSHFT N     &ht_right RCTRL E     &ht_right LALT I  &ht_right RGUI O  &kp SEMICOLON
-    &kp LPAR    &kp Z            &kp X            &kp C             &ht_mouse MOUSE_L D  &kp V                &kp K          &kp H                 &mm_cm_sc             &mm_pr_col        &kp FSLH          &kp RPAR
+    &kp LPAR    &kp Z            &kp X            &kp C             &ht_mouse MOUSE_L D  &kp V                &kp K          &kp H                 &kp COMMA             &kp DOT           &kp FSLH          &kp RPAR
                                              &lt_qt MEDIA_L ESC  &lt_qt NAV_L SPACE  &lt_qt CURSOR_L TAB      &lt_qt SYM_L ENTER  &lt_qt NUM_L BSPC
             >;
         };
