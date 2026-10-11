@@ -22,12 +22,12 @@
 //
 // DESIGN NOTES -- why, not what. Each layer has its own inline comment.
 //
-// LAYER INDICES 6, 7 AND 10 ARE RESERVED
+// LAYER INDICES 6 AND 7 ARE RESERVED
 //   config/trackball/charybdis_pointer.dtsi comes from the SHIELD overlay,
 //   not from this file. It matches the raw layer index:
-//     6 = slow (scaler 2 6)   7 = scroll (wheel)   10 = fast (scaler 2 1)
-//   All other layers use the base chain, scaler 5 5. If you move SLOW_L,
-//   SCROLL_L or FAST_L, the trackball changes mode on the wrong layer.
+//     6 = slow (scaler 2 6)   7 = scroll (wheel)
+//   All other layers use the base chain, scaler 5 5. If you move SLOW_L or
+//   SCROLL_L, the trackball changes mode on the wrong layer.
 //
 // POINTER SPEED IS A LAYER, NOT A KEY
 //   ZMK has no binding that changes pointer speed or rotation at run time.
@@ -61,10 +61,8 @@
 //
 // MIDDLE CLICK NEEDS BOTH CLICK KEYS PENDING
 //   Hold D first. Then press N and E. If you press all three together, the
-//   first click key resolves the hold-tap and becomes a left click. The
-//   combo lists FAST because FAST (10) is above MOUSE (9) and prevents the
-//   combo if it is absent. It lists GAME because GAME has its own LCLK and
-//   RCLK on those positions.
+//   first click key resolves the hold-tap and becomes a left click. It
+//   lists GAME because GAME has its own LCLK and RCLK on those positions.
 //
 // THUMB QUICK-TAP
 //   &lt_qt adds quick-tap-ms = <200>. Tap a thumb, then press and hold it
@@ -80,8 +78,8 @@
 //   Its combos target colemak_dh.keymap. Its 38+39 combo conflicts with the
 //   thumb combo above. */
 
-/* SLOW_L, SCROLL_L and FAST_L must keep indices 6, 7 and 10.
- * See LAYER INDICES 6, 7 AND 10 ARE RESERVED. */
+/* SLOW_L and SCROLL_L must keep indices 6 and 7.
+ * See LAYER INDICES 6 AND 7 ARE RESERVED. */
 #define BASE_L     0
 #define NAV_L      1
 #define CURSOR_L   2
@@ -92,8 +90,7 @@
 #define SCROLL_L   7
 #define FUN_L      8
 #define MOUSE_L    9
-#define FAST_L    10
-#define GAME_L    11
+#define GAME_L    10
 
 / {
     behaviors {
@@ -128,7 +125,7 @@
         combo_middle_click {
             bindings = <&mkp MCLK>;
             key-positions = <19 20>;
-            layers = <MOUSE_L FAST_L GAME_L>;
+            layers = <MOUSE_L GAME_L>;
             timeout-ms = <50>;
             slow-release;
         };
@@ -278,18 +275,7 @@
     // includes nifty controls on the left bottom row
     &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
     &trans      &trans           &trans           &trans            &trans               &trans               &trans         &mkp LCLK             &mkp RCLK             &trans            &trans            &trans
-    &trans      &mo FAST_L       &mo SLOW_L       &mo SCROLL_L      &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-                                             &trans              &trans              &trans                   &trans              &trans
-            >;
-        };
-
-    // TODO: this uggo... get rid of it if we can...
-        fast_layer {
-            display-name = "Fast";
-            bindings = <
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
+    &trans      &trans           &mo SLOW_L       &mo SCROLL_L      &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
                                              &trans              &trans              &trans                   &trans              &trans
             >;
         };
