@@ -390,11 +390,11 @@ parse_config:
     "&sync_panes": "TMUX SYNC"
 
     # --- BLE & USB ---
-    "&out OUT_TOG": "USB|BLE"
     "&bt BT_SEL 0": "BT0"
     "&bt BT_SEL 1": "BT1"
     "&bt BT_SEL 2": "BT2"
     "&bt BT_SEL 3": "BT3"
+    "&bt BT_SEL 4": "BT4"
 
   zmk_combos: {}
   zmk_preamble: "#define KEYMAP_DRAWER"
