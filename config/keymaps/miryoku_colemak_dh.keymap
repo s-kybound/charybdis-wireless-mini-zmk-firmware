@@ -101,7 +101,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            quick-tap-ms = <150>;
             bindings = <&mo>, <&kp>;    // hold = layer, tap = key code
         };
 
@@ -174,7 +174,7 @@
             bindings = <&lt_qt FUN_L DEL>;
             key-positions = <39 40>;
             layers = <BASE_L>;
-            timeout-ms = <50>;
+            timeout-ms = <150>;
             slow-release;
         };
 
@@ -182,14 +182,14 @@
             bindings = <&kp DEL>;
             key-positions = <39 40>;
             layers = <NAV_L>;
-            timeout-ms = <50>;
+            timeout-ms = <150>;
         };
 
         combo_thumb3_cursor {
             bindings = <&mkp MCLK>;
             key-positions = <39 40>;
             layers = <CURSOR_L>;
-            timeout-ms = <50>;
+            timeout-ms = <150>;
             slow-release;
         };
 
@@ -197,7 +197,7 @@
             bindings = <&kp K_MUTE>;
             key-positions = <39 40>;
             layers = <MEDIA_L>;
-            timeout-ms = <50>;
+            timeout-ms = <150>;
         };
     };
 
