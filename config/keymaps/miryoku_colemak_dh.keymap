@@ -132,6 +132,36 @@
 
         /* if we hold the right thumb keys together, it becomes the 
          * third right thumb key that we usually expect on such split keyboards */ 
+        /* left thumbs 37+38 = the outer left thumb, one combo per layer */
+        combo_thumb3l_base {
+            bindings = <&lt_qt MEDIA_L ESC>;
+            key-positions = <37 38>;
+            layers = <BASE_L>;
+            timeout-ms = <50>;
+            slow-release;
+        };
+
+        combo_thumb3l_num {
+            bindings = <&kp DOT>;
+            key-positions = <37 38>;
+            layers = <NUM_L>;
+            timeout-ms = <50>;
+        };
+
+        combo_thumb3l_sym {
+            bindings = <&kp LPAR>;
+            key-positions = <37 38>;
+            layers = <SYM_L>;
+            timeout-ms = <50>;
+        };
+
+        combo_thumb3l_fun {
+            bindings = <&kp K_APP>;
+            key-positions = <37 38>;
+            layers = <FUN_L>;
+            timeout-ms = <50>;
+        };
+
         /* awkward on purpose: left thumb layer + two top-row keys */
         combo_bt_clear {
             bindings = <&bt BT_CLR>;
@@ -177,9 +207,9 @@
         base_layer {
             display-name = "Base";
             bindings = <
-    &kp MINUS   &kp Q            &kp W            &kp F             &kp P                &kp B                &kp J          &kp L                 &kp U                 &kp Y             &kp APOS          &kp BSLH
-    &kp CAPS    &ht_left LGUI A  &ht_left LALT R  &ht_left LCTRL S  &ht_left LSHFT T     &kp G                &kp M          &ht_right RSHFT N     &ht_right RCTRL E     &ht_right LALT I  &ht_right RGUI O  &kp SEMICOLON
-    &kp LPAR    &kp Z            &kp X            &kp C             &ht_mouse MOUSE_L D  &kp V                &kp K          &kp H                 &kp COMMA             &kp DOT           &kp FSLH          &kp RPAR
+    &kp MINUS   &kp Q            &kp W            &kp F             &kp P                &kp B                &kp J          &kp L              &kp U                 &kp Y                 &kp APOS          &kp BSLH
+    &kp CAPS    &ht_left LGUI A  &ht_left LALT R  &ht_left LCTRL S  &ht_left LSHFT T     &kp G                &kp M          &ht_right RSHFT N  &ht_right RCTRL E     &ht_right LALT I      &ht_right RGUI O  &kp SEMICOLON
+    &kp LPAR    &kp Z            &kp X            &kp C             &ht_mouse MOUSE_L D  &kp V                &kp K          &kp H              &kp COMMA             &kp DOT               &kp FSLH          &kp RPAR
                                              &lt_qt MEDIA_L ESC  &lt_qt NAV_L SPACE  &lt_qt CURSOR_L TAB      &lt_qt SYM_L ENTER  &lt_qt NUM_L BSPC
             >;
         };
@@ -187,9 +217,9 @@
         nav_layer {
             display-name = "Nav";
             bindings = <
-    &to GAME_L  &bootloader      &none            &none             &none                &none                &kp LC(LS(Z))  &kp LC(V)             &kp LC(C)             &kp LC(X)         &kp LC(Z)         &none
-    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &caps_word     &kp LEFT              &kp DOWN              &kp UP            &kp RIGHT         &none
-    &none       &none            &none            &none             &none                &none                &kp INS        &kp HOME              &kp PG_DN             &kp PG_UP         &kp END           &none
+    &to GAME_L  &bootloader      &none            &none             &none                &none                &kp LC(LS(Z))  &kp LC(V)          &kp LC(C)             &kp LC(X)             &kp LC(Z)         &none
+    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &caps_word     &kp LEFT           &kp DOWN              &kp UP                &kp RIGHT         &none
+    &none       &none            &none            &none             &none                &none                &kp INS        &kp HOME           &kp PG_DN             &kp PG_UP             &kp END           &none
                                              &trans              &trans              &trans                   &kp ENTER           &kp BSPC
             >;
         };
@@ -197,9 +227,9 @@
         cursor_layer {
             display-name = "Cursor";
             bindings = <
-    &to GAME_L  &bootloader      &none            &none             &none                &none                &kp LC(LS(Z))  &kp LC(V)             &kp LC(C)             &kp LC(X)         &kp LC(Z)         &none
-    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &none          &mmv MOVE_LEFT        &mmv MOVE_DOWN        &mmv MOVE_UP      &mmv MOVE_RIGHT   &none
-    &none       &none            &none            &none             &none                &none                &none          &msc MOVE_LEFT        &msc MOVE_DOWN        &msc MOVE_UP      &msc MOVE_RIGHT   &none
+    &to GAME_L  &bootloader      &none            &none             &none                &none                &kp LC(LS(Z))  &kp LC(V)          &kp LC(C)             &kp LC(X)             &kp LC(Z)         &none
+    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &none          &mmv MOVE_LEFT     &mmv MOVE_DOWN        &mmv MOVE_UP          &mmv MOVE_RIGHT   &none
+    &none       &none            &none            &none             &none                &none                &none          &msc MOVE_LEFT     &msc MOVE_DOWN        &msc MOVE_UP          &msc MOVE_RIGHT   &none
                                              &trans              &trans              &trans                   &mkp RCLK           &mkp LCLK
             >;
         };
@@ -207,9 +237,9 @@
         media_layer {
             display-name = "Media";
             bindings = <
-    &to GAME_L  &bootloader      &none            &none             &none                &none                &bt BT_SEL 0   &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3      &bt BT_SEL 4      &none
-    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &none          &kp C_PREVIOUS        &kp C_VOLUME_DOWN     &kp C_VOLUME_UP   &kp C_NEXT        &none
-    &none       &studio_unlock   &none            &none             &none                &none                &none          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &none             &none
+    &to GAME_L  &bootloader      &none            &none             &none                &none                &none          &none              &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &none             &bt BT_NXT
+    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &none                &none          &kp C_PREVIOUS     &kp C_VOLUME_DOWN     &kp C_VOLUME_UP       &kp C_NEXT        &bt BT_PRV
+    &none       &studio_unlock   &none            &none             &none                &none                &out OUT_TOG   &bt BT_SEL 0       &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3      &bt BT_SEL 4
                                              &trans              &trans              &trans                   &kp C_STOP          &kp C_PLAY_PAUSE
             >;
         };
@@ -217,9 +247,9 @@
         num_layer {
             display-name = "Num";
             bindings = <
-    &kp LBRC    &kp LBKT         &kp N7           &kp N8            &kp N9               &kp RBKT             &none          &none                 &none                 &none             &bootloader       &kp RBRC
-    &kp LBKT    &kp SEMICOLON    &kp N4           &kp N5            &kp N6               &kp EQUAL            &none          &kp RSHFT             &kp RCTRL             &kp LALT          &kp RGUI          &kp RBKT
-    &kp LPAR    &kp GRAVE        &kp N1           &kp N2            &kp N3               &kp BSLH             &none          &none                 &none                 &none             &none             &kp RPAR
+    &kp LBRC    &kp LBKT         &kp N7           &kp N8            &kp N9               &kp RBKT             &none          &none              &none                 &none                 &bootloader       &kp RBRC
+    &kp LBKT    &kp SEMICOLON    &kp N4           &kp N5            &kp N6               &kp EQUAL            &none          &kp RSHFT          &kp RCTRL             &kp LALT              &kp RGUI          &kp RBKT
+    &kp LPAR    &kp GRAVE        &kp N1           &kp N2            &kp N3               &kp BSLH             &none          &none              &none                 &none                 &none             &kp RPAR
                                              &kp DOT             &kp N0              &kp MINUS                &trans              &trans
             >;
         };
@@ -227,9 +257,9 @@
         sym_layer {
             display-name = "Sym";
             bindings = <
-    &kp LBRC    &kp LBRC         &kp AMPS         &kp ASTRK         &kp LPAR             &kp RBRC             &none          &none                 &none                 &none             &bootloader       &kp RBRC
-    &kp LBKT    &kp COLON        &kp DLLR         &kp PRCNT         &kp CARET            &kp PLUS             &none          &kp RSHFT             &kp RCTRL             &kp LALT          &kp RGUI          &kp RBKT
-    &kp LPAR    &kp TILDE        &kp EXCLAMATION  &kp AT            &kp HASH             &kp PIPE             &none          &none                 &none                 &none             &none             &kp RPAR
+    &kp LBRC    &kp LBRC         &kp AMPS         &kp ASTRK         &kp LPAR             &kp RBRC             &none          &none              &none                 &none                 &bootloader       &kp RBRC
+    &kp LBKT    &kp COLON        &kp DLLR         &kp PRCNT         &kp CARET            &kp PLUS             &none          &kp RSHFT          &kp RCTRL             &kp LALT              &kp RGUI          &kp RBKT
+    &kp LPAR    &kp TILDE        &kp EXCLAMATION  &kp AT            &kp HASH             &kp PIPE             &none          &none              &none                 &none                 &none             &kp RPAR
                                              &kp LPAR            &kp RPAR            &kp UNDER                &trans              &trans
             >;
         };
@@ -239,9 +269,9 @@
             display-name = "Slow";
             bindings = <
     // Pointer-only (idx 6): slow_pointer override, &zip_xy_scaler 2 6.
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
                                              &trans              &trans              &trans                   &trans              &trans
             >;
         };
@@ -251,9 +281,9 @@
             display-name = "Scroll";
             bindings = <
     // Pointer-only (idx 7): scroller override, XY -> scroll, Y inverted.
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
                                              &trans              &trans              &trans                   &trans              &trans
             >;
         };
@@ -261,9 +291,9 @@
         fun_layer {
             display-name = "Fun";
             bindings = <
-    &kp LBRC    &kp F12          &kp F7           &kp F8            &kp F9               &kp PSCRN            &none          &none                 &none                 &none             &bootloader       &kp RBRC
-    &kp LBKT    &kp F11          &kp F4           &kp F5            &kp F6               &kp SLCK             &none          &kp RSHFT             &kp RCTRL             &kp LALT          &kp RGUI          &kp RBKT
-    &kp LPAR    &kp F10          &kp F1           &kp F2            &kp F3               &kp PAUSE_BREAK      &none          &none                 &none                 &none             &none             &kp RPAR
+    &kp LBRC    &kp F12          &kp F7           &kp F8            &kp F9               &kp PSCRN            &none          &none              &none                 &none                 &bootloader       &kp RBRC
+    &kp LBKT    &kp F11          &kp F4           &kp F5            &kp F6               &kp SLCK             &none          &kp RSHFT          &kp RCTRL             &kp LALT              &kp RGUI          &kp RBKT
+    &kp LPAR    &kp F10          &kp F1           &kp F2            &kp F3               &kp PAUSE_BREAK      &none          &none              &none                 &none                 &none             &kp RPAR
                                              &kp K_APP           &kp SPACE           &kp TAB                  &trans              &trans
             >;
         };
@@ -273,9 +303,9 @@
             bindings = <
     // mouse-mode activated by left index finger. hold for fancy mouse on right.
     // includes nifty controls on the left bottom row
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
-    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &mkp LCLK             &mkp RCLK             &trans            &trans            &trans
-    &trans      &trans           &mo SLOW_L       &mo SCROLL_L      &trans               &trans               &trans         &trans                &trans                &trans            &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
+    &trans      &trans           &trans           &trans            &trans               &trans               &trans         &mkp LCLK          &mkp RCLK             &trans                &trans            &trans
+    &trans      &trans           &mo SLOW_L       &mo SCROLL_L      &trans               &trans               &trans         &trans             &trans                &trans                &trans            &trans
                                              &trans              &trans              &trans                   &trans              &trans
             >;
         };
@@ -285,9 +315,9 @@
             bindings = <
     // game mode, keep in mind R and F are shifted to the left for this
     // we also sacrifice some keys for left and right click oopsie
-    &to BASE_L  &kp R            &kp Q            &kp W             &kp E                &kp T                &kp Y          &kp U                 &kp I                 &kp O             &kp P             &none
-    &kp LCTRL   &kp F            &kp A            &kp S             &kp D                &kp G                &kp H          &mkp LCLK             &mkp RCLK             &kp L             &kp APOS          &kp SEMICOLON
-    &kp LSHFT   &kp Z            &kp X            &kp C             &kp V                &kp B                &kp N          &kp M                 &kp COMMA             &kp DOT           &kp FSLH          &kp RSHFT
+    &to BASE_L  &kp R            &kp Q            &kp W             &kp E                &kp T                &kp Y          &kp U              &kp I                 &kp O                 &kp P             &none
+    &kp LCTRL   &kp F            &kp A            &kp S             &kp D                &kp G                &kp H          &mkp LCLK          &mkp RCLK             &kp L                 &kp APOS          &kp SEMICOLON
+    &kp LSHFT   &kp Z            &kp X            &kp C             &kp V                &kp B                &kp N          &kp M              &kp COMMA             &kp DOT               &kp FSLH          &kp RSHFT
                                              &kp ESC             &kp SPACE           &kp TAB                  &kp ENTER           &kp BSPC
             >;
         };
