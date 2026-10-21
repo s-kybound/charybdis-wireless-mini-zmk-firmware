@@ -761,36 +761,30 @@ text.br  { font-family: "JetBrainsMono Nerd Font"; fill: var(--all-corner); font
 </g>
 <g transform="translate(722, 48)" class="key keypos-6">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">0</tspan>
-</text>
 </g>
 <g transform="translate(798, 48)" class="key keypos-7">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">1</tspan>
-</text>
 </g>
 <g transform="translate(874, 38)" class="key keypos-8">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">2</tspan>
+<tspan x="0" dy="-0.75em">BRIGHT</tspan><tspan x="0" dy="1.5em">▼</tspan>
 </text>
 </g>
 <g transform="translate(950, 48)" class="key keypos-9">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">3</tspan>
+<tspan x="0" dy="-0.75em">BRIGHT</tspan><tspan x="0" dy="1.5em">▲</tspan>
 </text>
 </g>
 <g transform="translate(1026, 66)" class="key keypos-10">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">4</tspan>
-</text>
 </g>
 <g transform="translate(1102, 66)" class="key keypos-11">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">▲</tspan>
+</text>
 </g>
 <g transform="translate(38, 142)" class="key keypos-12">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
@@ -839,6 +833,9 @@ text.br  { font-family: "JetBrainsMono Nerd Font"; fill: var(--all-corner); font
 </g>
 <g transform="translate(1102, 142)" class="key keypos-23">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">▼</tspan>
+</text>
 </g>
 <g transform="translate(38, 218)" class="key keypos-24">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
@@ -863,27 +860,37 @@ text.br  { font-family: "JetBrainsMono Nerd Font"; fill: var(--all-corner); font
 </g>
 <g transform="translate(722, 200)" class="key keypos-30">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">USB|BLE</text>
 </g>
 <g transform="translate(798, 200)" class="key keypos-31">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BRIGHT</tspan><tspan x="0" dy="1.5em">▼</tspan>
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">0</tspan>
 </text>
 </g>
 <g transform="translate(874, 190)" class="key keypos-32">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.75em">BRIGHT</tspan><tspan x="0" dy="1.5em">▲</tspan>
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">1</tspan>
 </text>
 </g>
 <g transform="translate(950, 200)" class="key keypos-33">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">2</tspan>
+</text>
 </g>
 <g transform="translate(1026, 218)" class="key keypos-34">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">3</tspan>
+</text>
 </g>
 <g transform="translate(1102, 218)" class="key keypos-35">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.75em">BT</tspan><tspan x="0" dy="1.5em">4</tspan>
+</text>
 </g>
 <g transform="translate(302, 277)" class="key held keypos-36">
 <rect rx="6" ry="6" x="-36" y="-36" width="72" height="72" class="key held"/>
