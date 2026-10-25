@@ -101,7 +101,7 @@
     combos {
         compatible = "zmk,combos";
 
-	// click both mouse keys to create a middle click 
+	// click both mouse keys to create a middle click
         combo_middle_click {
             bindings = <&mkp MCLK>;
             key-positions = <19 20>;
@@ -110,8 +110,8 @@
             slow-release;
         };
 
-        /* if we hold the right thumb keys together, it becomes the 
-         * third right thumb key that we usually expect on such split keyboards */ 
+        /* if we hold the right thumb keys together, it becomes the
+         * third right thumb key that we usually expect on such split keyboards */
         /* left thumbs 37+38 = the outer left thumb, one combo per layer */
         combo_thumb3l_base {
             bindings = <&lt_qt MEDIA_L ESC>;
@@ -171,6 +171,13 @@
             layers = <MEDIA_L>;
             timeout-ms = <150>;
         };
+
+        combo_caps {
+            bindings = <&td_caps>;
+            key-positions = <16 19>;
+            layers = <BASE_L>;
+            timeout-ms = <50>;
+        };
     };
 
     keymap {
@@ -179,8 +186,8 @@
         base_layer {
             display-name = "Base";
             bindings = <
-    &kp MINUS   &kp Q            &kp W            &kp F             &kp P                &kp B                &kp J          &kp L              &kp U                 &kp Y                 &kp APOS          &kp BSLH
-    &td_caps    &ht_left LGUI A  &ht_left LALT R  &ht_left LCTRL S  &ht_left LSHFT T     &ht_hyper_l HYPER G  &ht_hyper_r HYPER M  &ht_right RSHFT N  &ht_right RCTRL E     &ht_right LALT I      &ht_right RGUI O  &kp SEMICOLON
+    &none       &kp Q            &kp W            &kp F             &kp P                &kp B                &kp J          &kp L              &kp U                 &kp Y                 &kp APOS          &none
+    &none       &ht_left LGUI A  &ht_left LALT R  &ht_left LCTRL S  &ht_left LSHFT T     &ht_hyper_l HYPER G  &ht_hyper_r HYPER M  &ht_right RSHFT N  &ht_right RCTRL E     &ht_right LALT I      &ht_right RGUI O  &none
     &none       &kp Z            &kp X            &kp C             &ht_mouse MOUSE_L D  &kp V                &kp K          &kp H              &kp COMMA             &kp DOT               &kp FSLH          &none
                                              &lt_qt MEDIA_L ESC  &lt_qt NAV_L SPACE  &lt_qt CODE_L TAB      &lt_qt SYM_L ENTER  &lt_qt NUM_L BSPC
             >;
@@ -199,9 +206,9 @@
         code_layer {
             display-name = "Code";
             bindings = <
-    &none       &none            &none            &none             &none                &none                &none          &kp LT             &kp GT                &kp LBRC              &kp RBRC          &none
-    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &kp HYPER            &none          &kp LPAR           &kp RPAR              &kp LBKT              &kp RBKT          &none
-    &none       &none            &none            &none             &none                &none                &none          &kp PIPE           &kp UNDER             &kp TILDE             &kp GRAVE         &none
+    &none       &none            &none            &none             &none                &none                &kp BSLH       &kp LT             &kp GT                &kp LBRC              &kp RBRC          &none
+    &none       &kp LGUI         &kp LALT         &kp LCTRL         &kp LSHFT            &kp HYPER            &td_caps       &kp LPAR           &kp RPAR              &kp LBKT              &kp RBKT          &none
+    &none       &none            &none            &none             &none                &none                &kp SEMICOLON  &kp PIPE           &kp UNDER             &kp TILDE             &kp GRAVE         &none
                                              &trans              &trans              &trans                   &kp EQUAL           &kp MINUS
             >;
         };
