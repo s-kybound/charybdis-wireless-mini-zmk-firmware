@@ -1,3 +1,6 @@
+**** DEPRECATED *****
+
+
 [![.github/workflows/build.yml](https://github.com/280Zo/charybdis-wireless-mini-zmk-firmware/actions/workflows/build.yml/badge.svg)](https://github.com/280Zo/charybdis-wireless-mini-zmk-firmware/actions/workflows/build.yml)
 
 ## Intro
